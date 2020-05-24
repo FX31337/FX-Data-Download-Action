@@ -11,11 +11,29 @@
 
 This GitHub Action downloads Forex historical data.
 
-## Inputs
+## Main Inputs
 
 ### `Pairs`
 
 Pair(s) to download (separated by comma).
+
+## Period Inputs
+
+### `Years` (int/string)
+
+Year(s) to download (separated by comma). Default: `2020`.
+
+### `Months` (int/string)
+
+Months(s) to download (separated by comma). Default: `1`.
+
+### `Days` (int/string)
+
+Day(s) to download (separated by comma). Default: `1`.
+
+### `Hours` (int/string)
+
+Hour(s) to download (separated by comma). Default: `all`.
 
 <!--
 ## Outputs

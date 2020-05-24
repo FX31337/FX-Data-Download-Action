@@ -9,6 +9,19 @@ inputs:
     description: 'Pairs to download'
     default: 'EURUSD'
 
+  Years:
+    description: 'Years to download'
+    default: 2020
+  Months:
+    description: 'Months to download'
+    default: 1
+  Days:
+    description: 'Days to download'
+    default: 1
+  Hours:
+    description: 'Hours to download'
+    default: 'all'
+
 # outputs:
 #  foo: # id of output
 #    description: 'Foo'
@@ -19,6 +32,15 @@ runs:
 
     - '-p'
     - '${{ inputs.Pairs }}'
+
+    - '-y'
+    - '${{ inputs.Years }}'
+    - '-m'
+    - '${{ inputs.Months }}'
+    - '-d'
+    - '${{ inputs.Days }}'
+    - '-h'
+    - '${{ inputs.Hours }}'
 
 branding:
   icon: 'bar-chart'
