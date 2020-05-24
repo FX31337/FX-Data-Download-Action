@@ -1,0 +1,25 @@
+# action.yml
+---
+name: 'FX Data Download Action'
+description: 'Downloads Forex historical data'
+author: 'kenorb'
+inputs:
+
+  Pairs:
+    description: 'Pairs to download'
+    default: 'EURUSD'
+
+# outputs:
+#  foo: # id of output
+#    description: 'Foo'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+
+    - '-p'
+    - '${{ inputs.Pairs }}'
+
+branding:
+  icon: 'bar-chart'
+  color: 'green'
