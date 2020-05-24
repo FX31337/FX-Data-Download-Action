@@ -13,9 +13,9 @@ This GitHub Action downloads Forex historical data.
 
 ## Main Inputs
 
-### `Pairs`
+### `Pairs` (string)
 
-Pair(s) to download (separated by comma).
+Pair(s) to download (separated by comma). Default: `EURUSD`.
 
 ## Period Inputs
 
@@ -47,6 +47,8 @@ Foo bar.
 
 ```yaml
 uses: ea31337/fx-data-download-action@master
+with:
+  Pairs: 'EURUSD'
 ```
 
 ## Related actions
