@@ -4,10 +4,10 @@ name: Action
 on:
   pull_request:
     paths-ignore:
-      - '*.md'
+      - '**/*.md'
   push:
     paths-ignore:
-      - '*.md'
+      - '**/*.md'
 
 jobs:
   Local:

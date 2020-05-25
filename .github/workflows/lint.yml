@@ -4,15 +4,15 @@ name: Lint
 on:
   pull_request:
     paths:
-      - '*.md'
-      - '*.py'
-      - '*.y?ml'
+      - '**/*.md'
+      - '**/*.py'
+      - '**/*.y?ml'
       - 'Dockerfile'
   push:
     paths:
-      - '*.md'
-      - '*.py'
-      - '*.y?ml'
+      - '**/*.md'
+      - '**/*.py'
+      - '**/*.y?ml'
       - 'Dockerfile'
 
 jobs:
