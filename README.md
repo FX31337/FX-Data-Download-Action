@@ -46,7 +46,7 @@ Foo bar.
 ## Example usage
 
 ```yaml
-uses: ea31337/fx-data-download-action@master
+uses: fx31337/fx-data-download-action@master
 with:
   Pairs: 'EURUSD'
 ```
@@ -54,31 +54,31 @@ with:
 ## Related actions
 
 - To convert CSV file into different formats,
-  use [FX-Data-Convert-Action](https://github.com/EA31337/FX-Data-Convert-Action) action.
+  use [FX-Data-Convert-Action](https://github.com/FX31337/FX-Data-Convert-Action) action.
 - To generate CSV file instead,
-  use [FX-Data-Generate-Action](https://github.com/EA31337/FX-Data-Generate-Action) action.
+  use [FX-Data-Generate-Action](https://github.com/FX31337/FX-Data-Generate-Action) action.
 
 ### Support
 
-- For bugs/features, raise a [new issue at GitHub](https://github.com/EA31337/FX-Data-Download-Action/issues).
+- For bugs/features, raise a [new issue at GitHub](https://github.com/FX31337/FX-Data-Download-Action/issues).
 - Join our [Telegram group][tg-chat-link] and [channel][tg-channel-link] for help.
 
 <!-- Named links -->
 
-[github-release-image]: https://img.shields.io/github/release/EA31337/FX-Data-Download-Action.svg?logo=github
-[github-release-link]: https://github.com/EA31337/FX-Data-Download-Action/releases
+[github-release-image]: https://img.shields.io/github/release/FX31337/FX-Data-Download-Action.svg?logo=github
+[github-release-link]: https://github.com/FX31337/FX-Data-Download-Action/releases
 
 [tg-channel-image]: https://img.shields.io/badge/Telegram-news-0088CC.svg?logo=telegram
 [tg-channel-link]: https://t.me/EA31337_News
 [tg-chat-image]: https://img.shields.io/badge/Telegram-chat-0088CC.svg?logo=telegram
 [tg-chat-link]: https://t.me/EA31337
 
-[gha-link-action-master]: https://github.com/EA31337/FX-Data-Download-Action/actions?query=workflow%3AAction+branch%3Amaster
-[gha-image-action-master]: https://github.com/EA31337/FX-Data-Download-Action/workflows/Action/badge.svg
-[gha-link-docker-master]: https://github.com/EA31337/FX-Data-Download-Action/actions?query=workflow%3ADocker+branch%3Amaster
-[gha-image-docker-master]: https://github.com/EA31337/FX-Data-Download-Action/workflows/Docker/badge.svg
-[gha-link-lint-master]: https://github.com/EA31337/FX-Data-Download-Action/actions?query=workflow%3ALint+branch%3Amaster
-[gha-image-lint-master]: https://github.com/EA31337/FX-Data-Download-Action/workflows/Lint/badge.svg
+[gha-link-action-master]: https://github.com/FX31337/FX-Data-Download-Action/actions?query=workflow%3AAction+branch%3Amaster
+[gha-image-action-master]: https://github.com/FX31337/FX-Data-Download-Action/workflows/Action/badge.svg
+[gha-link-docker-master]: https://github.com/FX31337/FX-Data-Download-Action/actions?query=workflow%3ADocker+branch%3Amaster
+[gha-image-docker-master]: https://github.com/FX31337/FX-Data-Download-Action/workflows/Docker/badge.svg
+[gha-link-lint-master]: https://github.com/FX31337/FX-Data-Download-Action/actions?query=workflow%3ALint+branch%3Amaster
+[gha-image-lint-master]: https://github.com/FX31337/FX-Data-Download-Action/workflows/Lint/badge.svg
 
 [gitpod-image]: https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod
-[gitpod-link]: https://gitpod.io/#https://github.com/EA31337/FX-Data-Download-Action
+[gitpod-link]: https://gitpod.io/#https://github.com/FX31337/FX-Data-Download-Action
