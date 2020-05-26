@@ -1,7 +1,7 @@
 # FX Data Download 🐳 Action
 
-<!-- [![Release][github-release-image]][github-release-link] -->
 <!-- [![Docker image][docker-build-image]][docker-build-link] -->
+[![Release][github-release-image]][github-release-link]
 [![Status][gha-image-action-master]][gha-link-action-master]
 [![Status][gha-image-docker-master]][gha-link-docker-master]
 [![Status][gha-image-lint-master]][gha-link-lint-master]
@@ -10,6 +10,43 @@
 [![Edit][gitpod-image]][gitpod-link]
 
 This GitHub Action downloads Forex historical data.
+
+By default it downloads and converts the files to CSV format.
+
+## Usage
+
+For full documentation, please read: [GitHub Actions Documentation](https://help.github.com/en/actions).
+
+### Latest release
+
+```yaml
+uses: fx31337/fx-data-download-action@v1
+```
+
+### Specific release
+
+```yaml
+uses: fx31337/fx-data-download-action@v1.0.0
+```
+
+Note: Check _Releases_ for more details.
+
+### Latest development version
+
+```yaml
+uses: fx31337/fx-data-download-action@master
+```
+
+### Overriding default inputs
+
+```yaml
+uses: fx31337/fx-data-download-action@master
+with:
+    Pairs: 'EURUSD'
+    Years: 2020
+    Months: 1-2
+```
+
 
 ## Main Inputs
 
@@ -49,14 +86,6 @@ Extra arguments to pass to the script. Default: `-v` (for verbose output).
 Foo bar.
 -->
 
-## Example usage
-
-```yaml
-uses: fx31337/fx-data-download-action@master
-with:
-  Pairs: 'EURUSD'
-```
-
 ## Related actions
 
 - To convert CSV file into different formats,
@@ -64,7 +93,7 @@ with:
 - To generate CSV file instead,
   use [FX-Data-Generate-Action](https://github.com/FX31337/FX-Data-Generate-Action) action.
 
-### Support
+## Support
 
 - For bugs/features, raise a [new issue at GitHub](https://github.com/FX31337/FX-Data-Download-Action/issues).
 - Join our [Telegram group][tg-chat-link] and [channel][tg-channel-link] for help.
