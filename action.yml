@@ -50,5 +50,5 @@ runs:
     - '${{ inputs.CmdArgs }}'
 
 branding:
-  icon: 'bar-chart'
-  color: 'green'
+  icon: 'download'
+  color: 'blue'
