@@ -1,7 +1,7 @@
 # action.yml
 ---
 name: 'FX Data Download Action'
-description: 'Downloads Forex historical data'
+description: 'Downloads Forex historical data (e.g. EURUSD) to CSV format'
 author: 'kenorb'
 inputs:
 
