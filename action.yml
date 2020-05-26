@@ -5,6 +5,10 @@ description: 'Downloads Forex historical data'
 author: 'kenorb'
 inputs:
 
+  CmdArgs:
+    description: 'Extra script arguments'
+    default: '-v'
+
   Pairs:
     description: 'Pairs to download'
     default: 'EURUSD'
@@ -30,9 +34,10 @@ runs:
   image: 'Dockerfile'
   args:
 
+    - '-c'
+
     - '-p'
     - '${{ inputs.Pairs }}'
-
     - '-y'
     - '${{ inputs.Years }}'
     - '-m'
@@ -41,6 +46,8 @@ runs:
     - '${{ inputs.Days }}'
     - '-h'
     - '${{ inputs.Hours }}'
+
+    - '${{ inputs.CmdArgs }}'
 
 branding:
   icon: 'bar-chart'

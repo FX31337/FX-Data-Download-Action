@@ -35,6 +35,12 @@ Day(s) to download (separated by comma). Default: `1`.
 
 Hour(s) to download (separated by comma). Default: `all`.
 
+## Other Inputs
+
+### `CmdArgs`
+
+Extra arguments to pass to the script. Default: `-v` (for verbose output).
+
 <!--
 ## Outputs
 
