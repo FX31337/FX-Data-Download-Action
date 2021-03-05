@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Example usage:
-#   ./fx-data-download.py -p EURUSD -y 2013,2014
+#   ./fx-data-download.py -p EURUSD -y 2013, 2014
 
 import sys
 import os
@@ -19,7 +19,9 @@ import csv
 import subprocess
 
 
-intlist = lambda l: list(map(int, l))
+def intlist(ls):
+    return list(map(int, ls))
+
 
 # Create a mapping of currencies.
 all_currencies = {
@@ -123,7 +125,8 @@ all_currencies = {
     # "E_DAAX": 1326988800, # Germany 30 starting from 2012.01.19 16:00
     # "E_SWMI": 1326988800, # Switzerland 20 starting from 2012.01.19 16:00
     #  indices - Americas
-    # "E_NQcomp": 1326988800, # US Tech Composite starting from 2012.01.19 16:00
+    # "E_NQcomp": 1326988800, # US Tech Composite
+    #                           starting from 2012.01.19 16:00
 
     "E_Nysseecomp": 1326988800,  # US Composite starting from 2012.01.19 16:00
 
@@ -139,30 +142,39 @@ all_currencies = {
     # "E_N225Jap": 1328486400, # Japan 225 starting from 2012.02.06 00:00
 
     # Stocks - Australia.
-    # "E_ANZASX": 1348146000, # Australia & Nz Banking starting from 2012.09.20 13:00
+    # "E_ANZASX": 1348146000, # Australia & Nz Banking
+    #                           starting from 2012.09.20 13:00
     # "E_BHPASX": 1348156800, # Bhp Billiton starting from 2012.09.20 16:00
-    # "E_CBAASX": 1348156800, # Commonwealth Bank Of Australia starting from 2012.09.20 16:00
-    # "E_NABASX": 1348156800, # National Australia Bank starting from 2012.09.20 16:00
+    # "E_CBAASX": 1348156800, # Commonwealth Bank Of Australia
+    #                           starting from 2012.09.20 16:00
+    # "E_NABASX": 1348156800, # National Australia Bank
+    #                           starting from 2012.09.20 16:00
     # "E_WBCASX": 1348156800, # Westpac Banking starting from 2012.09.20 16:00
 
     # Stocks - Hungary
     # "E_EGISBUD": 1348146000, # Egis Nyrt starting from 2012.09.20 13:00
-    # "E_MOLBUD": 1348146000, # Mol Hungarian Oil & Gas Nyrt starting from 2012.09.20 13:00
-    # "E_MTELEKOMBUD": 1348146000, # Magyar Telekom Telecommunications starting from 2012.09.20 13:00
+    # "E_MOLBUD": 1348146000, # Mol Hungarian Oil & Gas Nyrt
+    #                           starting from 2012.09.20 13:00
+    # "E_MTELEKOMBUD": 1348146000, # Magyar Telekom Telecommunications
+    #                                starting from 2012.09.20 13:00
     # "E_OTPBUD": 1348146000, # Ot Bank Nyrt starting from 2012.09.20 13:00
-    # "E_RICHTERBUD": 1348146000, # Richter Gedeon Nyrt starting from 2012.09.20 13:00
+    # "E_RICHTERBUD": 1348146000, # Richter Gedeon Nyrt
+    #                               starting from 2012.09.20 13:00
 
     # Stocks - France.
     # "E_BNPEEB": 1341594000, # BNP Paribas starting from 2012.07.06 17:00
     # "E_FPEEB": 1341594000, # Total starting from 2012.07.06 17:00
     # "E_FTEEEB": 1341594000, # France Telecom starting from 2012.07.06 17:00
-    # "E_MCEEB": 1341594000, # LVMH Moet Hennessy Louis Vuitton starting from 2012.07.06 17:00
+    # "E_MCEEB": 1341594000, # LVMH Moet Hennessy Louis Vuitton
+    #                          starting from 2012.07.06 17:00
     # "E_SANEEB": 1341594000, # Sanofi starting from 2012.07.06 17:00
 
     # Stocks - Netherlands.
     # "E_MTEEB": 1333101600, # ArcelorMittal starting from 2012.03.30 10:00
-    # "E_PHIA": 1341406800, # Koninklijke Philips Electronics starting from 2012.07.04 13:00
-    # "E_RDSAEEB": 1333101600, # Royal Dutch Shell starting from 2012.03.30 10:00
+    # "E_PHIA": 1341406800, # Koninklijke Philips Electronics
+    #                         starting from 2012.07.04 13:00
+    # "E_RDSAEEB": 1333101600, # Royal Dutch Shell
+    #                            starting from 2012.03.30 10:00
     # "E_UNAEEB": 1333101600, # Unilever starting from 2012.03.30 10:00
 
     # Stocks - Germany.
@@ -174,7 +186,8 @@ all_currencies = {
 
     # Stocks - Hong Kong.
     # "E_0883HKG": 1341781200, # CNOOC starting from 2012.07.08 21:00
-    # "E_0939HKG": 1341784800, # China Construction Bank starting from 2012.07.08 22:00
+    # "E_0939HKG": 1341784800, # China Construction Bank
+    #                            starting from 2012.07.08 22:00
     # "E_0941HKG": 1341781200, # China Mobile starting from 2012.07.08 21:00
     # "E_1398HKG": 1341781200, # ICBC starting from 2012.07.08 21:00
     # "E_3988HKG": 1341784800, # Bank Of China starting from 2012.07.08 22:00
@@ -204,16 +217,22 @@ all_currencies = {
     # Stocks - Denmark.
     # "E_CARL_BOMX": 1348149600, # Carlsberg starting from 2012.09.20 14:00
     # "E_DANSKEOMX": 1348149600, # Danske Bank starting from 2012.09.20 14:00
-    # "E_MAERSK_BOMX": 1348149600, # Moeller Maersk B starting from 2012.09.20 14:00
+    # "E_MAERSK_BOMX": 1348149600, # Moeller Maersk B
+    #                                starting from 2012.09.20 14:00
     # "E_NOVO_BOMX": 1348149600, # Novo Nordisk starting from 2012.09.20 14:00
     # "E_VWSOMX": 1348149600, # Vestas Wind starting from 2012.09.20 14:00
 
     # Stocks - Sweden.
-    # "E_SHB_AOMX": 1348149600, # Svenska Handelsbanken starting from 2012.09.20 14:00
-    # "E_SWED_AOMX": 1348149600, # Swedbank starting from 2012.09.20 14:00
-    # "E_TLSNOMX": 1348149600, # Teliasonera starting from 2012.09.20 14:00
-    # "E_VOLV_BOMX": 1348149600, # Volvo B starting from 2012.09.20 14:00
-    # "E_NDAOMX": 1348149600, # Nordea Bank starting from 2012.09.20 14:00
+    # "E_SHB_AOMX": 1348149600, # Svenska Handelsbanken
+    #                             starting from 2012.09.20 14:00
+    # "E_SWED_AOMX": 1348149600, # Swedbank
+    #                              starting from 2012.09.20 14:00
+    # "E_TLSNOMX": 1348149600, # Teliasonera
+    #                            starting from 2012.09.20 14:00
+    # "E_VOLV_BOMX": 1348149600, # Volvo B
+    #                              starting from 2012.09.20 14:00
+    # "E_NDAOMX": 1348149600, # Nordea Bank
+    #                           starting from 2012.09.20 14:00
 
     # Stocks - Norway.
     # "E_DNBOSL": 1348146000, # DNB starting from 2012.09.20 13:00
@@ -223,11 +242,16 @@ all_currencies = {
     # "E_YAROSL": 1348146000, # Yara starting from 2012.09.20 13:00
 
     # Stocks - Singapore,
-    # "E_C07SES": 1348149600, # Jardine Matheson starting from 2012.09.20 14:00
-    # "E_D05SES": 1348149600, # DBS Group starting from 2012.09.20 14:00
-    # "E_O39SES": 1348153200, # Oversea-Chinese Banking starting from 2012.09.20 15:00
-    # "E_U11SES": 1348149600, # United Overseas Bank starting from 2012.09.20 14:00
-    # "E_Z74SES": 1348149600, # Singapore Telecommunications starting from 2012.09.20 14:00
+    # "E_C07SES": 1348149600, # Jardine Matheson
+    #                           starting from 2012.09.20 14:00
+    # "E_D05SES": 1348149600, # DBS Group
+    #                           starting from 2012.09.20 14:00
+    # "E_O39SES": 1348153200, # Oversea-Chinese Banking
+    #                           starting from 2012.09.20 15:00
+    # "E_U11SES": 1348149600, # United Overseas Bank
+    #                           starting from 2012.09.20 14:00
+    # "E_Z74SES": 1348149600, # Singapore Telecommunications
+    #                           starting from 2012.09.20 14:00
 
     # Stocks - Switzerland,
     # "E_CSGN": 1326988800, # Cs Group starting from 2012.01.19 16:00
@@ -243,11 +267,17 @@ all_currencies = {
     # "E_VOE": 1348149600, # Voestalpine starting from 2012.09.20 14:00
 
     # Stocks - Poland,
-    # "E_KGHWAR": 1348146000, # KGHM Polska Miedz starting from 2012.09.20 13:00
-    # "E_PEOWAR": 1348146000, # Bank Pekao starting from 2012.09.20 13:00
-    # "E_PKNWAR": 1348146000, # Polski Koncern Naftowy Orlen starting from 2012.09.20 13:00
-    # "E_PKOBL1WAR": 1348146000, # Powszechna Kasa Oszczednosci Bank Polski starting from 2012.09.20 13:00
-    # "E_PZUWAR": 1348146000, # Powszechny Zaklad Ubezpieczen starting from 2012.09.20 13:00
+    # "E_KGHWAR": 1348146000, # KGHM Polska Miedz
+    #                           starting from 2012.09.20 13:00
+    # "E_PEOWAR": 1348146000, # Bank Pekao
+    #                           starting from 2012.09.20 13:00
+    # "E_PKNWAR": 1348146000, # Polski Koncern Naftowy
+    #                           Orlen starting from 2012.09.20 13:00
+    # "E_PKOBL1WAR": 1348146000, # Powszechna Kasa
+    #                              Oszczednosci Bank Polski
+    #                              starting from 2012.09.20 13:00
+    # "E_PZUWAR": 1348146000, # Powszechny Zaklad
+    #                           Ubezpieczen starting from 2012.09.20 13:00
 
     # Stocks - US.
     # "E_AAPL": 1333101600, # Apple starting from 2012.03.30 10:00
@@ -279,31 +309,40 @@ all_currencies = {
     # "E_T": 1324378800, # AT&T starting from 2011.12.20 11:00
     # "E_UPS": 1333105200, # UPS starting from 2012.03.30 11:00
 
-    "E_VIXX": 1326988800,  # Cboe Volatility Index starting from 2012.01.19 16:00
+    "E_VIXX": 1326988800,
+    # Cboe Volatility Index starting from 2012.01.19 16:00
 
     # "E_WMT": 1326988800, # Wal-Mart Stores starting from 2012.01.19 16:00
     # "E_XOM": 1324375200, # Exxon Mobil starting from 2011.12.20 10:00
     # "E_YHOO": 1326988800, # Yahoo starting from 2012.01.19 16:00
 }
 
-class Dukascopy:
-    url_tpl = "http://www.dukascopy.com/datafeed/%s/%04d/%02d/%02d/%02dh_ticks.bi5"
 
-    def __init__(self,
-                 pair,
-                 year,
-                 month,
-                 day,
-                 hour,
-                 dest = "download/dukascopy"):
+class Dukascopy:
+    url_tpl = ("'http://www.dukascopy.com/'\
+                'datafeed/%s/%04d/%02d/%02d/%02dh_ticks.bi5'")
+
+    def __init__(self, pair, year, month, day, hour,
+                 dest="download/dukascopy"):
         if not os.path.exists(dest):
             os.makedirs(dest)
-        self.year = year
-        self.month = month
-        self.day = day
-        self.hour = hour
-        self.url = self.url_tpl % (pair, int(year), month - 1, day, hour)
-        self.path = "%s/%04d/%02d/%04d-%02d-%02d--%02dh_ticks.bi5" % (dest, year, month, year, month, day, hour)
+            self.year = year
+            self.month = month
+            self.day = day
+            self.hour = hour
+            self.url = self.url_tpl % (pair,
+                                       int(year),
+                                       month - 1,
+                                       day,
+                                       hour)
+            self.path = "%s/%04d/%02d/%04d-%02d-%02d',
+            '--%02dh_ticks.bi5"' % (dest,
+                                    year,
+                                    month,
+                                    year,
+                                    month,
+                                    day,
+                                    hour)
 
     def download(self):
         print("Downloading %s into: %s..." % (self.url, self.path))
@@ -319,19 +358,24 @@ class Dukascopy:
                     urllib.request.urlretrieve(self.url, filename=self.path)
                     break
                 except HTTPError as err:
-                    print("Error: %s, reason: %s. Retrying (%i).." % (err.code, err.reason, i))
+                    print('"Error: %s, reason: %s. Retrying (%i).."'
+                          % (err.code, err.reason, i))
                     i += 1
                 except IOError as err:
-                    print("Error: %s, reason: %s. Retrying (%i).." % (err.errno, err.strerror, i))
+                    print('"Error: %s, reason: %s. Retrying (%i).."'
+                          % (err.errno, err.strerror, i))
                     i += 1
                 except socket.timeout as err:
-                    print("Network error: %s. Retrying (%i).." % (err.strerror, i))
+                    print('"Network error: %s. Retrying (%i).."'
+                          % (err.strerror, i))
                     i += 1
                 except socket.error as err:
-                    print("Network error: %s. Retrying (%i).." % (err.strerror, i))
+                    print('"Network error: %s. Retrying (%i).."'
+                          % (err.strerror, i))
                     i += 1
                 except ContentTooShortError as err:
-                    print("Error: The downloaded data is less than the expected amount, so skipping.")
+                    print('"Error: The downloaded data is less '
+                          'than the expected amount, so skipping."')
                     i += 1
 
             if i == 5:
@@ -360,11 +404,15 @@ class Dukascopy:
                 data = f.read()
         # Workaround for liblzma bug (https://bugs.python.org/issue21872)
         except EOFError:
-            print("Info: Ran into liblzma decompressor bug, falling back to command line decompression...")
+            print('"Info: Ran into liblzma decompressor bug,'
+                  'falling back to command line decompression..."')
             try:
-                pipe = subprocess.Popen(['xz', '-dc', self.path], stdout=subprocess.PIPE)
+                pipe = subprocess.Popen(['xz',
+                                         '-dc',
+                                         self.path], stdout=subprocess.PIPE)
             except FileNotFoundError:
-                print("Error: Unable to find the 'xz' LZMA decompressor utility in your PATH, moving on.")
+                print('"Error: Unable to find the 'xz' LZMA'
+                      'decompressor utility in your PATH, moving on."')
                 return False
             data, error = pipe.communicate()
 
@@ -392,7 +440,12 @@ class Dukascopy:
             # Calculating & formatting column values
             minute = row[0]/1000//60
             second = row[0]/1000 - minute*60
-            timestamp = "%d.%02d.%02d %02d:%02d:%06.3f" % (self.year, self.month, self.day, self.hour, minute, second)
+            timestamp = "%d.%02d.%02d %02d:%02d:%06.3f" % (self.year,
+                                                           self.month,
+                                                           self.day,
+                                                           self.hour,
+                                                           minute,
+                                                           second)
             askPrice = row[1]/point
             bidPrice = row[2]/point
             bidVolume = "%.2f" % (row[4])
@@ -406,23 +459,60 @@ class Dukascopy:
 if __name__ == '__main__':
     # Parse arguments.
     parser = argparse.ArgumentParser(add_help=False)
-    parser.add_argument("-?", "--help",         action="help",                          help="Show this help message and exit." )
-    parser.add_argument("-v", "--verbose",      action="store_true",  dest="verbose",   help="Increase output verbosity." )
-    parser.add_argument("-D", "--download-dir", action="store",       dest="dest",      help="Directory to download files.", default="download/dukascopy")
-    parser.add_argument("-c", "--csv-convert",  action="store_true",  dest="csv",       help="Perform CSV conversion.")
-    parser.add_argument("-p", "--pairs",        action="store",       dest="pairs",     help="Pair(s) to download (separated by comma).", default="EURUSD")
-    parser.add_argument("-h", "--hours",        action="store",       dest="hours",     help="Hour(s) to download (separated by comma).", default="all")
-    parser.add_argument("-d", "--days",         action="store",       dest="days",      help="Day(s) to download (separated by comma).", default="1")
-    parser.add_argument("-m", "--months",       action="store",       dest="months",    help="Month(s) to download (separated by comma).", default="1")
-    parser.add_argument("-y", "--years",        action="store",       dest="years",     help="Year(s) to download (separated by comma).", default="2020")
+    parser.add_argument("-?", "--help",
+                        action="help",
+                        help="Show this help message and exit.")
+    parser.add_argument("-v", "--verbose",
+                        action="store_true",
+                        dest="verbose",
+                        help="Increase output verbosity.")
+    parser.add_argument("-D", "--download-dir",
+                        action="store",
+                        dest="dest",
+                        help="Directory to download files.",
+                        default="download/dukascopy")
+    parser.add_argument("-c", "--csv-convert",
+                        action="store_true",
+                        dest="csv",
+                        help="Perform CSV conversion.")
+    parser.add_argument("-p", "--pairs",
+                        action="store",
+                        dest="pairs",
+                        help="Pair(s) to download (separated by comma).",
+                        default="EURUSD")
+    parser.add_argument("-h", "--hours",
+                        action="store",
+                        dest="hours",
+                        help="Hour(s) to download (separated by comma).",
+                        default="all")
+    parser.add_argument("-d", "--days",
+                        action="store",
+                        dest="days",
+                        help="Day(s) to download (separated by comma).",
+                        default="1")
+    parser.add_argument("-m", "--months",
+                        action="store",
+                        dest="months",
+                        help="Month(s) to download (separated by comma).",
+                        default="1")
+    parser.add_argument("-y", "--years",
+                        action="store",
+                        dest="years",
+                        help="Year(s) to download (separated by comma).",
+                        default="2020")
     args = parser.parse_args()
 
     curr_year = datetime.date.today().year
-    pairs =  list(all_currencies.keys()) if args.pairs  == "all" else args.pairs.split(',')
-    hours  = range(0, 23+1)              if args.hours  == "all" else intlist(args.hours.split(',')
-    days   = range(1, 31+1)              if args.days   == "all" else intlist(args.days.split(',')
-    months = range(1, 12+1)              if args.months == "all" else intlist(args.months.split(',')
-    years  = range(1997, curr_year+1)    if args.years  == "all" else intlist(args.years.split(',')
+    pairs = list(all_currencies.keys())\
+        if args.pairs == "all" else args.pairs.split(',')
+    hours = range(0, 23+1)\
+        if args.hours == "all" else intlist(args.hours.split(',')
+    days = range(1, 31+1)\
+        if args.days == "all" else intlist(args.days.split(',')
+    months = range(1, 12+1)\
+        if args.months == "all" else intlist(args.months.split(',')
+    years = range(1997, curr_year+1)\
+        if args.years == "all" else intlist(args.years.split(',')
 
     try:
         currencies = []
