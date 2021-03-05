@@ -18,6 +18,7 @@ from struct import *
 import csv
 import subprocess
 
+
 intlist = lambda l: list(map(int, l))
 
 # Create a mapping of currencies.
@@ -288,7 +289,13 @@ all_currencies = {
 class Dukascopy:
     url_tpl = "http://www.dukascopy.com/datafeed/%s/%04d/%02d/%02d/%02dh_ticks.bi5"
 
-    def __init__(self, pair, year, month, day, hour, dest = "download/dukascopy"):
+    def __init__(self,
+                 pair,
+                 year,
+                 month,
+                 day,
+                 hour,
+                 dest = "download/dukascopy"):
         if not os.path.exists(dest):
             os.makedirs(dest)
         self.year = year
@@ -412,10 +419,10 @@ if __name__ == '__main__':
 
     curr_year = datetime.date.today().year
     pairs =  list(all_currencies.keys()) if args.pairs  == "all" else args.pairs.split(',')
-    hours  = range(0, 23+1)              if args.hours  == "all" else intlist(args.hours.split(','))
-    days   = range(1, 31+1)              if args.days   == "all" else intlist(args.days.split(','))
-    months = range(1, 12+1)              if args.months == "all" else intlist(args.months.split(','))
-    years  = range(1997, curr_year+1)    if args.years  == "all" else intlist(args.years.split(','))
+    hours  = range(0, 23+1)              if args.hours  == "all" else intlist(args.hours.split(',')
+    days   = range(1, 31+1)              if args.days   == "all" else intlist(args.days.split(',')
+    months = range(1, 12+1)              if args.months == "all" else intlist(args.months.split(',')
+    years  = range(1997, curr_year+1)    if args.years  == "all" else intlist(args.years.split(',')
 
     try:
         currencies = []
@@ -425,17 +432,28 @@ if __name__ == '__main__':
                     for day in sorted(days):
                         for hour in sorted(hours):
                             try:
-                                dt = datetime.datetime(year=year, month=month, day=day, hour=hour)
+                                dt = datetime.datetime(year=year,
+                                                       month=month,
+                                                       day=day,
+                                                       hour=hour)
                                 unix = time.mktime(dt.timetuple())
 
                                 # Validate dates
-                                if unix > all_currencies.get(pair) and unix < time.time():
-                                    ds = Dukascopy(pair, year, month, day, hour, dest=args.dest + "/" + pair)
+                                if (unix > all_currencies.get(pair) and
+                                   unix < time.time()):
+                                    ds = Dukascopy(pair,
+                                                   year,
+                                                   month,
+                                                   day,
+                                                   hour,
+                                                   dest=args.dest + "/" + pair)
                                     ds.download()
                                     if args.csv:
                                         ds.bt5_to_csv()
-                                    # raise KeyboardInterrupt # perform one record for testing
-                            except ValueError: # Ignore invalid dates.
+                                    # raise KeyboardInterrupt
+                                    # perform one record for testing
+                            except ValueError:
+                                # Ignore invalid dates.
                                 continue
     except KeyboardInterrupt:
         sys.exit()
