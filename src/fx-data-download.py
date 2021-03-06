@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Example usage:
-#   ./fx-data-download.py -p EURUSD -y 2013, 2014
+# ./fx-data-download.py -p EURUSD -y 2013, 2014
 
 import sys
 import os
@@ -9,6 +9,7 @@ import datetime
 import time
 import urllib.request
 import socket
+from datetime import datetime
 from urllib.error import HTTPError, ContentTooShortError
 try:
     import lzma
@@ -17,6 +18,7 @@ except ImportError:
 from struct import *
 import csv
 import subprocess
+import parser
 
 
 def intlist(ls):
@@ -517,9 +519,9 @@ if __name__ == '__main__':
     try:
         currencies = []
         for pair in sorted(pairs):
-            for year in sorted(years):
-                for month in sorted(months):
-                    for day in sorted(days):
+            for year in sorted(year):
+                for month in sorted(month):
+                    for day in sorted(day):
                         for hour in sorted(hours):
                             try:
                                 dt = datetime.datetime(year=year,
