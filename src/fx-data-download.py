@@ -9,7 +9,6 @@ import datetime
 import time
 import urllib.request
 import socket
-from datetime import datetime
 from urllib.error import HTTPError, ContentTooShortError
 try:
     import lzma
@@ -18,7 +17,6 @@ except ImportError:
 from struct import *
 import csv
 import subprocess
-import parser
 
 
 def intlist(ls):
@@ -311,8 +309,8 @@ all_currencies = {
     # "E_T": 1324378800, # AT&T starting from 2011.12.20 11:00
     # "E_UPS": 1333105200, # UPS starting from 2012.03.30 11:00
 
-    "E_VIXX": 1326988800,
-    # Cboe Volatility Index starting from 2012.01.19 16:00
+    # "E_VIXX": 1326988800, # Cboe Volatility Index starting
+    #                       from 2012.01.19 16:00
 
     # "E_WMT": 1326988800, # Wal-Mart Stores starting from 2012.01.19 16:00
     # "E_XOM": 1324375200, # Exxon Mobil starting from 2011.12.20 10:00
@@ -337,14 +335,14 @@ class Dukascopy:
                                        month - 1,
                                        day,
                                        hour)
-            self.path = "%s/%04d/%02d/%04d-%02d-%02d"\
-            "--%02dh_ticks.bi5" % (dest,
-                                    year,
-                                    month,
-                                    year,
-                                    month,
-                                    day,
-                                    hour)
+            self.path = "%s/%04d/%02d/%04d-%02d-%02d" \
+                "--%02dh_ticks.bi5" % (dest,
+                                       year,
+                                       month,
+                                       year,
+                                       month,
+                                       day,
+                                       hour)
 
     def download(self):
         print("Downloading %s into: %s..." % (self.url, self.path))
@@ -360,11 +358,11 @@ class Dukascopy:
                     urllib.request.urlretrieve(self.url, filename=self.path)
                     break
                 except HTTPError as err:
-                    print('"Error: %s, reason: %s. Retrying (%i).."'
+                    print("Error: %s, reason: %s. Retrying (%i).."
                           % (err.code, err.reason, i))
                     i += 1
                 except IOError as err:
-                    print('"Error: %s, reason: %s. Retrying (%i).."'
+                    print("Error: %s, reason: %s. Retrying (%i).."
                           % (err.errno, err.strerror, i))
                     i += 1
                 except socket.timeout as err:
