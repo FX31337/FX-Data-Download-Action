@@ -337,8 +337,8 @@ class Dukascopy:
                                        month - 1,
                                        day,
                                        hour)
-            self.path = "'%s/%04d/%02d/%04d-%02d-%02d',
-            '--%02dh_ticks.bi5'" % (dest,
+            self.path = "%s/%04d/%02d/%04d-%02d-%02d"\
+            "--%02dh_ticks.bi5" % (dest,
                                     year,
                                     month,
                                     year,
@@ -519,9 +519,9 @@ if __name__ == '__main__':
     try:
         currencies = []
         for pair in sorted(pairs):
-            for year in sorted(year):
-                for month in sorted(month):
-                    for day in sorted(day):
+            for year in sorted(years):
+                for month in sorted(months):
+                    for day in sorted(days):
                         for hour in sorted(hours):
                             try:
                                 dt = datetime.datetime(year=year,
