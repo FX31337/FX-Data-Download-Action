@@ -124,7 +124,7 @@ all_currencies = {
     # "E_Futsee100": 1326988800, # UK 100 starting from 2012.01.19 16:00
     # "E_DAAX": 1326988800, # Germany 30 starting from 2012.01.19 16:00
     # "E_SWMI": 1326988800, # Switzerland 20 starting from 2012.01.19 16:00
-    #  indices - Americas
+    # Indices - Americas
     # "E_NQcomp": 1326988800, # US Tech Composite
     #                           starting from 2012.01.19 16:00
 
@@ -503,15 +503,15 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     curr_year = datetime.date.today().year
-    pairs = list(all_currencies.keys())\
+    pairs = list(all_currencies.keys()) \
         if args.pairs == "all" else args.pairs.split(',')
-    hours = range(0, 23+1)\
+    hours = range(0, 23+1) \
         if args.hours == "all" else intlist(args.hours.split(',')
-    days = range(1, 31+1)\
+    days = range(1, 31+1) \
         if args.days == "all" else intlist(args.days.split(',')
-    months = range(1, 12+1)\
+    months = range(1, 12+1) \
         if args.months == "all" else intlist(args.months.split(',')
-    years = range(1997, curr_year+1)\
+    years = range(1997, curr_year+1) \
         if args.years == "all" else intlist(args.years.split(',')
     try:
         currencies = []
@@ -535,8 +535,8 @@ if __name__ == '__main__':
                                                        month,
                                                        day,
                                                        hour,
-                                                       dest=args.dest\
-                                                           + "/" + pair)
+                                                       dest=args.dest \
+                                                        + "/" + pair)
                                         ds.download()
                                     if args.csv:
                                         ds.bt5_to_csv()
