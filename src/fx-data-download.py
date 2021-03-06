@@ -335,8 +335,8 @@ class Dukascopy:
                                        month - 1,
                                        day,
                                        hour)
-            self.path = "%s/%04d/%02d/%04d-%02d-%02d',
-            '--%02dh_ticks.bi5"' % (dest,
+            self.path = "'%s/%04d/%02d/%04d-%02d-%02d',
+            '--%02dh_ticks.bi5'" % (dest,
                                     year,
                                     month,
                                     year,
@@ -536,7 +536,8 @@ if __name__ == '__main__':
                                                        month,
                                                        day,
                                                        hour,
-                                                       dest=args.dest + "/" + pair)
+                                                       dest=args.dest\
+                                                           + "/" + pair)
                                         ds.download()
                                     if args.csv:
                                         ds.bt5_to_csv()
