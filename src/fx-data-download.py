@@ -411,8 +411,8 @@ class Dukascopy:
                                          '-dc',
                                          self.path], stdout=subprocess.PIPE)
             except FileNotFoundError:
-                print('"Error: Unable to find the 'xz' LZMA'
-                      'decompressor utility in your PATH, moving on."')
+                print("Error: Unable to find the 'xz' LZMA \
+                      decompressor utility in your PATH, moving on.")
                 return False
             data, error = pipe.communicate()
 
