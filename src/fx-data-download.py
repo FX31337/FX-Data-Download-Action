@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Example usage:
-# ./fx-data-download.py -p EURUSD -y 2013, 2014
+#   ./fx-data-download.py -p EURUSD -y 2013,2014
 
 import sys
 import os
