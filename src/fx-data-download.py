@@ -513,7 +513,6 @@ if __name__ == '__main__':
         if args.months == "all" else intlist(args.months.split(',')
     years = range(1997, curr_year+1)\
         if args.years == "all" else intlist(args.years.split(',')
-
     try:
         currencies = []
         for pair in sorted(pairs):
