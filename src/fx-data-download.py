@@ -309,8 +309,8 @@ all_currencies = {
     # "E_T": 1324378800, # AT&T starting from 2011.12.20 11:00
     # "E_UPS": 1333105200, # UPS starting from 2012.03.30 11:00
 
-    # "E_VIXX": 1326988800, # Cboe Volatility Index starting
-    #                       from 2012.01.19 16:00
+    "E_VIXX": 1326988800, # Cboe Volatility Index starting
+    #                     from 2012.01.19 16:00
 
     # "E_WMT": 1326988800, # Wal-Mart Stores starting from 2012.01.19 16:00
     # "E_XOM": 1324375200, # Exxon Mobil starting from 2011.12.20 10:00
