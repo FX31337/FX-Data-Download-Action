@@ -373,7 +373,7 @@ class Dukascopy:
                     print("Network error: %s. Retrying (%i).."
                           % (err.strerror, i))
                     i += 1
-                except ContentTooShortError as err:
+                except ContentTooShortError:
                     print("Error: The downloaded data is less "
                           "than the expected amount, so skipping.")
                     i += 1
