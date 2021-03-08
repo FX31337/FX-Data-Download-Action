@@ -326,23 +326,23 @@ class Dukascopy:
                  dest="download/dukascopy"):
         if not os.path.exists(dest):
             os.makedirs(dest)
-            self.year = year
-            self.month = month
-            self.day = day
-            self.hour = hour
-            self.url = self.url_tpl % (pair,
-                                       int(year),
-                                       month - 1,
-                                       day,
-                                       hour)
-            self.path = "%s/%04d/%02d/%04d-%02d-%02d"\
-                "--%02dh_ticks.bi5" % (dest,
-                                       year,
-                                       month,
-                                       year,
-                                       month,
-                                       day,
-                                       hour)
+        self.year = year
+        self.month = month
+        self.day = day
+        self.hour = hour
+        self.url = self.url_tpl % (pair,
+                                   int(year),
+                                   month - 1,
+                                   day,
+                                   hour)
+        self.path = "%s/%04d/%02d/%04d-%02d-%02d"\
+            "--%02dh_ticks.bi5" % (dest,
+                                   year,
+                                   month,
+                                   year,
+                                   month,
+                                   day,
+                                   hour)
 
     def download(self):
         print("Downloading %s into: %s..." % (self.url, self.path))
