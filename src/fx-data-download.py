@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Example usage:
-#   ./fx-data-download.py -p EURUSD -y 2013,2014
+# ./fx-data-download.py -p EURUSD -y 2013,2014
 
 import sys
 import os
@@ -14,7 +14,7 @@ try:
     import lzma
 except ImportError:
     from backports import lzma
-from struct import *
+from struct import unpack
 import csv
 import subprocess
 
@@ -366,16 +366,16 @@ class Dukascopy:
                           % (err.errno, err.strerror, i))
                     i += 1
                 except socket.timeout as err:
-                    print('"Network error: %s. Retrying (%i).."'
+                    print("Network error: %s. Retrying (%i).."
                           % (err.strerror, i))
                     i += 1
                 except socket.error as err:
-                    print('"Network error: %s. Retrying (%i).."'
+                    print("Network error: %s. Retrying (%i).."
                           % (err.strerror, i))
                     i += 1
                 except ContentTooShortError as err:
-                    print('"Error: The downloaded data is less '
-                          'than the expected amount, so skipping."')
+                    print("Error: The downloaded data is less "
+                          "than the expected amount, so skipping.")
                     i += 1
 
             if i == 5:
@@ -503,16 +503,16 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     curr_year = datetime.date.today().year
-    pairs = list(all_currencies.keys()) \
+    pairs = list(all_currencies.keys())\
         if args.pairs == "all" else args.pairs.split(',')
-    hours = range(0, 23+1) \
-        if args.hours == "all" else intlist(args.hours.split(',')
-    days = range(1, 31+1) \
-        if args.days == "all" else intlist(args.days.split(',')
-    months = range(1, 12+1) \
-        if args.months == "all" else intlist(args.months.split(',')
-    years = range(1997, curr_year+1) \
-        if args.years == "all" else intlist(args.years.split(',')
+    hours = range(0, 23+1)\
+        if args.hours == "all" else intlist(args.hours.split(','))
+    days = range(1, 31+1)\
+        if args.days == "all" else intlist(args.days.split(','))
+    months = range(1, 12+1)\
+        if args.months == "all" else intlist(args.months.split(','))
+    years = range(1997, curr_year+1)\
+        if args.years == "all" else intlist(args.years.split(','))
     try:
         currencies = []
         for pair in sorted(pairs):
@@ -529,15 +529,15 @@ if __name__ == '__main__':
 
                                 # Validate dates
                                 if (unix > all_currencies.get(pair) and
-                                    unix < time.time()):
-                                        ds = Dukascopy(pair,
-                                                       year,
-                                                       month,
-                                                       day,
-                                                       hour,
-                                                       dest=args.dest \
-                                                        + "/" + pair)
-                                        ds.download()
+                                        unix < time.time()):
+                                    ds = Dukascopy(pair,
+                                                   year,
+                                                   month,
+                                                   day,
+                                                   hour,
+                                                   dest=args.dest
+                                                   + "/" + pair)
+                                    ds.download()
                                     if args.csv:
                                         ds.bt5_to_csv()
                                     # raise KeyboardInterrupt
