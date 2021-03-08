@@ -310,7 +310,7 @@ all_currencies = {
     # "E_UPS": 1333105200, # UPS starting from 2012.03.30 11:00
 
     # Cboe Volatility Index starting from 2012.01.19 16:00
-     "E_VIXX": 1326988800
+    "E_VIXX": 1326988800
 
     # "E_WMT": 1326988800, # Wal-Mart Stores starting from 2012.01.19 16:00
     # "E_XOM": 1324375200, # Exxon Mobil starting from 2011.12.20 10:00
@@ -319,8 +319,8 @@ all_currencies = {
 
 
 class Dukascopy:
-    url_tpl = "http://www.dukascopy.com/"
-    "datafeed/%s/%04d/%02d/%02d/%02dh_ticks.bi5"
+    url_tpl = "http://www.dukascopy.com/" \
+        "datafeed/%s/%04d/%02d/%02d/%02dh_ticks.bi5"
 
     def __init__(self, pair, year, month, day, hour,
                  dest="download/dukascopy"):
