@@ -535,8 +535,8 @@ if __name__ == '__main__':
                                                    month,
                                                    day,
                                                    hour,
-                                                   dest=args.dest
-                                                   + "/" + pair)
+                                                   dest=args.dest +
+                                                   "/" + pair)
                                     ds.download()
                                     if args.csv:
                                         ds.bt5_to_csv()
