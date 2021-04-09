@@ -88,9 +88,11 @@ Foo bar.
 ## Related actions
 
 - To convert CSV file into different formats,
-  use [FX-Data-Convert-Action](https://github.com/FX31337/FX-Data-Convert-Action) action.
+  use [FX-Data-Convert-Action](https://github.com/FX31337/FX-Data-Convert-Action)
+  action.
 - To generate CSV file instead,
-  use [FX-Data-Generate-Action](https://github.com/FX31337/FX-Data-Generate-Action) action.
+  use [FX-Data-Generate-Action](https://github.com/FX31337/FX-Data-Generate-Action)
+  action.
 
 ## Support
 
