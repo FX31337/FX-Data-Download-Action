@@ -98,8 +98,8 @@ Foo bar.
 
 <!-- Named links -->
 
-[github-tag-image]: https://img.shields.io/github/tag/FX31337/FX-Data-Convert-Action.svg?logo=github
-[github-tag-link]: https://github.com/FX31337/FX-Data-Convert-Action/tags
+[github-tag-image]: https://img.shields.io/github/tag/FX31337/FX-Data-Download-Action.svg?logo=github
+[github-tag-link]: https://github.com/FX31337/FX-Data-Download-Action/tags
 
 [tg-channel-image]: https://img.shields.io/badge/Telegram-join-0088CC.svg?logo=telegram
 [tg-channel-link]: https://t.me/EA31337
