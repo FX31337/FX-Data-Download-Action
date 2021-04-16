@@ -40,7 +40,7 @@ uses: fx31337/fx-data-download-action@master
 ```yaml
 uses: fx31337/fx-data-download-action@master
 with:
-    Pairs: 'EURUSD'
+    Pairs: EURUSD
     Years: 2020
     Months: 1-2
 ```
@@ -72,6 +72,10 @@ Day(s) to download (separated by comma). Default: `1`.
 Hour(s) to download (separated by comma). Default: `all`.
 
 ### Other Inputs
+
+#### `DestDir`
+
+Destination directory to download the files. Default: `.`.
 
 #### `CmdArgs`
 

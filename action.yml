@@ -9,6 +9,10 @@ inputs:
     description: 'Extra script arguments'
     default: '-v'
 
+  DestDir:
+    description: 'Destination directory'
+    default: '.'
+
   Pairs:
     description: 'Pairs to download'
     default: 'EURUSD'
@@ -46,6 +50,9 @@ runs:
     - '${{ inputs.Days }}'
     - '-h'
     - '${{ inputs.Hours }}'
+
+    - '-D'
+    - '${{ inputs.DestDir }}'
 
     - '${{ inputs.CmdArgs }}'
 
