@@ -7,6 +7,11 @@ repos:
       - id: yamllint
         args: ["-c", ".yamllint", "-s"]
 
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.1.0
+    hooks:
+      - id: hadolint
+
   - repo: https://github.com/psf/black
     rev: 20.8b1
     hooks:
