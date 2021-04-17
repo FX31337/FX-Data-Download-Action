@@ -286,6 +286,9 @@ class Dukascopy:
         if os.path.isfile(self.path):
             print("File (%s) exists, so skipping." % self.path)
             return True
+        elif os.path.isfile(self.path.replace("bi5", "csv")):
+            print("File (%s) exists, so skipping." % self.path.replace("bi5", "csv"))
+            return True
         else:
             if not os.path.exists(os.path.dirname(self.path)):
                 os.makedirs(os.path.dirname(self.path))
