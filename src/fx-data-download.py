@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# Script to download Forex historical data and convert into CSV format.
 # Example usage:
 #   ./fx-data-download.py -p EURUSD -y 2013,2014
 
@@ -372,6 +373,9 @@ class Dukascopy:
             if pair == sym:
                 point = 1000
                 break
+
+        if pair.endswith("JPY"):
+            point = 1000
 
         TICK_BYTES = 20
         for i in range(0, len(data) // TICK_BYTES):
