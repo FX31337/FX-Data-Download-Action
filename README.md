@@ -2,6 +2,7 @@
 
 [![Tag][github-tag-image]][github-tag-link]
 [![Status][gha-image-action-master]][gha-link-action-master]
+[![Status][gha-image-check-master]][gha-link-check-master]
 [![Status][gha-image-docker-master]][gha-link-docker-master]
 [![Channel][tg-channel-image]][tg-channel-link]
 [![Edit][gitpod-image]][gitpod-link]
@@ -111,6 +112,8 @@ Foo bar.
 
 [gha-link-action-master]: https://github.com/FX31337/FX-Data-Download-Action/actions?query=workflow%3AAction+branch%3Amaster
 [gha-image-action-master]: https://github.com/FX31337/FX-Data-Download-Action/workflows/Action/badge.svg
+[gha-link-check-master]: https://github.com/FX31337/FX-Data-Download-Action/actions?query=workflow%3ACheck+branch%3Amaster
+[gha-image-check-master]: https://github.com/FX31337/FX-Data-Download-Action/workflows/Check/badge.svg
 [gha-link-docker-master]: https://github.com/FX31337/FX-Data-Download-Action/actions?query=workflow%3ADocker+branch%3Amaster
 [gha-image-docker-master]: https://github.com/FX31337/FX-Data-Download-Action/workflows/Docker/badge.svg
 
